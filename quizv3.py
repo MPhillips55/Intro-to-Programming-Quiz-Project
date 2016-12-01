@@ -25,6 +25,7 @@ med_sentences = ["A FOR loop will iterate through through an entire list object.
 hard_sentences = ["The DOT operator is another way to pass parameters to a function.", "PARAMETERS are passed into a function.", 
 "TEST cases are used to verify code is working as intended.", "Proper INDENTATION is required for python code to compile."]
 
+#Main game flow, including introduction, leads to user choice on # of guesses, level select, and the question/input function
 def game_flow():
 	print ""
 	print "Hello, welcome to an Introduction to Programming Quiz on Key Topics!"
@@ -41,6 +42,7 @@ def game_flow():
 	if diff_level == 3:
 		ask_question(hard_questions, hard_answers, hard_sentences, guesses_left)	
 
+#User chooses how many guesses they will have before they lose.
 def num_guesses():
 	print ""
 	print "How many guesses do you think you need before the game will end?"
@@ -77,6 +79,7 @@ def level_select():
 			print ""
 			print "Please enter a number between 1 and 3."	
 
+#Checks whether or not the user is out of guesses based on the value they chose. 
 def check_guesses(guesses_left):
 	total_guesses = guesses_left
 	if total_guesses > 1:
@@ -87,11 +90,12 @@ def check_guesses(guesses_left):
 		print "You have " + str(guesses_left) + " guess left."
 	elif total_guesses == 0:
 		print ""
-		print "You lost."
+		print "You lost. Type 1 to play again, or 2 to quit the game."
 		print ""
 		end_game()
 	return
 
+#Asks the user a quiz question, checks the answer. 
 def ask_question(list_of_questions, list_of_answers, sentence_list, guesses_left):
 	total_questions = len(list_of_questions)
 	question_index = 0
@@ -112,14 +116,15 @@ def ask_question(list_of_questions, list_of_answers, sentence_list, guesses_left
 	print ""
 	end_game()
 
+#Prints the complete quiz question if the user enters the answer.
 def print_right_answer(sentence_list, question_index):
 	print ""
 	print sentence_list[question_index]
 	print ""
 	return
 
-
 def end_game():
+'''User can chose whether to restart the game or to quit the program'''	
 	while True:
 		try:
 			game_end_input = int(raw_input("1 to play again, 2 to quit: "))
@@ -134,6 +139,3 @@ def end_game():
 			print ""
 	
 game_flow()
-
-
-
